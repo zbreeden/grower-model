@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Signal — Module</title>
+  <link rel="stylesheet" href="../../assets/style.css" />
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function push(event, params = {}) { dataLayer.push({ event, ...params }); console.log("Pushed", event, params); }
+    document.addEventListener("DOMContentLoaded", () => push("page_view", { module: "signal" }));
+  </script>
+</head>
+<body class="wrap">
+  <p><a href="../../">← Back</a></p>
+  <h1>The Signal</h1>
+  <p class="muted">Fire common events for GTM/GA4 testing.</p>
+
+  <div class="grid">
+    <section class="card">
+      <h2>CTA Click</h2>
+      <p>Simulate a primary call-to-action.</p>
+      <button class="btn" onclick='push("cta_click", { id: "demo-cta", label: "Start Free Trial", location: "signal" })'>
+        Click CTA
+      </button>
+    </section>
+
+    <section class="card">
+      <h2>Form Submit</h2>
+      <form onsubmit='push("form_submit", { form_id: "contact-001" }); this.reset(); return false;'>
+        <input style="padding:10px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--text);width:100%;margin-bottom:8px" placeholder="Your email (not sent)" />
+        <button class="btn" type="submit">Submit</button>
+      </form>
+      <p class="muted">No data is transmitted; this only pushes to <code>dataLayer</code>.</p>
+    </section>
+  </div>
+</body>
+</html>

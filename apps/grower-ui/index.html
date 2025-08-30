@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Grower — Modular Dashboard Sandbox</title>
+  <meta name="description" content="Public sandbox for analytics practice, BI artifacts, and portfolio workflows." />
+  <link rel="stylesheet" href="assets/style.css" />
+  <script>
+    // Safe to include even if you later add GTM. Avoid double-tagging GA4.
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    // Example: if using GA4 directly, uncomment and set your ID:
+    // gtag('js', new Date());
+    // gtag('config','G-XXXXXXX');
+  </script>
+</head>
+<body>
+  <header class="wrap hero">
+    <div>
+      <h1>🌱 The Grower</h1>
+      <p>Modular Dashboard Sandbox — GA4/GTM practice, BI artifacts, and workflows.</p>
+      <div class="cta-row">
+        <a class="btn" href="modules/playground/">Open the UX Playground →</a>
+        <a class="btn ghost" href="modules/signal/">The Signal →</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap grid">
+    <section class="card">
+      <h2>Getting Started</h2>
+      <ol>
+        <li>Create a GA4 property & a GTM Web container.</li>
+        <li>Publish this site; verify with GTM Preview & GA4 DebugView.</li>
+        <li>Use <em>The Signal</em> and <em>UX Playground</em> to fire:
+          <code>cta_click</code>, <code>form_submit</code>, <code>nav_search</code>, <code>page_view</code>.
+        </li>
+      </ol>
+      <p class="muted">Events are PII-free and for sandbox learning only.</p>
+    </section>
+
+    <section class="card">
+      <h2>Modules</h2>
+      <div id="modules"></div>
+    </section>
+  </main>
+
+  <footer class="wrap footer">
+    <span>© 2025 The Grower</span>
+  </footer>
+
+  <script src="assets/script.js"></script>
+</body>
+</html>

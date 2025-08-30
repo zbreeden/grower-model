@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UX Playground — Module</title>
+  <link rel="stylesheet" href="../../assets/style.css" />
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function push(event, params = {}) { dataLayer.push({ event, ...params }); console.log("Pushed", event, params); }
+    document.addEventListener("DOMContentLoaded", () => push("page_view", { module: "playground" }));
+    function doSearch() {
+      const q = document.getElementById("q").value.trim();
+      const results_count = q ? Math.floor(Math.random()*5)+1 : 0;
+      push("nav_search", { query: q || "(blank)", results_count });
+      document.getElementById("results").textContent = results_count + " mock results";
+    }
+  </script>
+</head>
+<body class="wrap">
+  <p><a href="../../">← Back</a></p>
+  <h1>UX Playground</h1>
+  <p class="muted">Try simple actions that emit test events.</p>
+
+  <div class="grid">
+    <section class="card">
+      <h2>Search</h2>
+      <div style="display:flex;gap:8px">
+        <input id="q" placeholder="Type a query…" style="flex:1;padding:10px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--text)">
+        <button class="btn" onclick="doSearch()">Search</button>
+      </div>
+      <p id="results" class="muted" style="margin-top:6px"></p>
+    </section>
+
+    <section class="card">
+      <h2>CTA</h2>
+      <button class="btn" onclick='push("cta_click", { id: "playground-cta", label: "Sign Up", location: "playground" })'>Click CTA</button>
+    </section>
+  </div>
+</body>
+</html>
