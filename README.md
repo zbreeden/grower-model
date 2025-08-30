@@ -1,49 +1,58 @@
-# FourTwenty • The Signal
-Semantic trigger layer — detects and propagates glossary‑aligned events across the suite.
+# The Grower — Modular Dashboard Sandbox
 
-## What's inside
-- **Purpose:** Provide a simple, auditable event taxonomy and a tiny HTML playground to trigger/test events end‑to‑end.
-- **Artifacts:** `/playground` (UX sandbox), `/gtm` (how‑to + templates), `/ga4` (event spec), `/powerbi` (BI notes), `/artifacts` (screens/GIFs).
-- **Telemetry:** GA4 via **GTM** (no PII). Use Tag Assistant & GA4 **DebugView** for verification. Screenshots can live under `/artifacts`.
+A monorepo scaffold for a modular analytics dashboard system. Out of the box you get:
+- A static site in `apps/grower-ui` (deploys to GitHub Pages).
+- Folders for analytics artifacts (GA4/GTM), SQL/dbt models, Power BI dashboards, data samples, and docs.
+- GitHub Actions workflow that deploys the UI on push to `main`.
 
-## Quick start
-1) Open **`/playground/ux_playground.html`** locally.
-   - Option A: double‑click to open in your browser.
-   - Option B (recommended): serve locally so Tag Assistant works — `python3 -m http.server 5500` from repo root, then visit `http://localhost:5500/playground/ux_playground.html`.
-2) In **GTM**, publish a workspace that contains GA4 Event tags mapping to the events below.
-3) Replace the placeholders in the HTML (`GTM-XXXXXXX`) with your actual GTM container ID (or inject GTM via the Tag Assistant Companion).
+## Quickstart
 
-## Event taxonomy (MVP)
-We keep events small and obvious, with stable names and typed parameters.
+1) Create a new repo on GitHub named `the-grower` (or whatever you like), **empty** (no README).
+2) On your machine (or Codespaces):
 
-| event_name      | when it fires                             | params                                  |
-|-----------------|-------------------------------------------|-----------------------------------------|
-| `cta_click`     | any primary CTA is clicked                | `cta_id`, `cta_text`, `location`        |
-| `form_submit`   | lead/contact form successfully submitted  | `form_id`, `form_name`, `fields_count`  |
-| `nav_search`    | a search query is submitted               | `query`, `results_count`                |
-| `page_view`     | a virtual/soft page change                | `page_id`, `page_title`                 |
-
-See the full JSON spec in [`/ga4/events.json`](ga4/events.json).
-
-## Highlights
-- **Event taxonomy:** `<event_1>`, `<event_2>` … with params `<param_a>`, `<param_b>`
-- **BI views:** provide a small star schema sketch in `/powerbi` and iterate.
-
-## Repository layout
-```
-/
-├─ playground/         # tiny HTML app to push dataLayer events
-├─ gtm/                # GTM mapping guide + import templates
-├─ ga4/                # GA4/Measurement spec
-├─ powerbi/            # BI modeling notes (+ PBIX lives outside git)
-├─ docs/               # glossary, contributing, etc.
-├─ artifacts/          # screenshots, GIFs (not tracked by LFS in this starter)
-└─ scripts/            # helpers (local server, lint, etc.)
+```bash
+git init
+git branch -m main
+git add .
+git commit -m "feat: seed The Grower scaffold"
+git remote add origin https://github.com/<your-username>/<your-repo>.git
+git push -u origin main
 ```
 
-## Contributing
-- Use feature branches: `feat/<short-name>`, `fix/<short-name>`.
-- Conventional commits are encouraged, e.g. `feat(playground): add search demo`.
+3) In the repo Settings → Pages, set:
+- **Build and deployment**: GitHub Actions
+- The provided workflow (`Deploy Pages`) will publish `apps/grower-ui` to Pages automatically.
 
-## License
-MIT — see [LICENSE](LICENSE).
+4) Visit your Pages URL (e.g., `https://<your-username>.github.io/<your-repo>/`).
+
+## Repo layout
+
+```
+.
+├─ apps/
+│  └─ grower-ui/          # Static site that becomes your public sandbox
+├─ analytics/
+│  ├─ ga4/
+│  └─ gtm/
+├─ models/                # SQL/dbt (add your warehouse models here)
+├─ dashboards/
+│  └─ powerbi/
+├─ data/
+│  └─ sample/
+├─ docs/                  # Architecture, roadmap, etc.
+└─ .github/workflows/     # Pages deploy workflow
+```
+
+## Local edits
+
+It’s plain HTML/CSS/JS. Open `apps/grower-ui/index.html` in a browser to preview.
+Adjust module cards in `assets/script.js` (see the `modules` array).
+
+## GA4/GTM
+
+The UI includes a `window.dataLayer` bootstrap. If you use GTM, add your container snippet.
+If you use GA4 gtag directly, add your `G-XXXX` config. Avoid double-tagging.
+
+## Licensing
+
+MIT. See `LICENSE`.
