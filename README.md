@@ -1,58 +1,32 @@
-# The Grower — Modular Dashboard Sandbox
+# Grower Model
 
-A monorepo scaffold for a modular analytics dashboard system. Out of the box you get:
-- A static site in `apps/grower-ui` (deploys to GitHub Pages).
-- Folders for analytics artifacts (GA4/GTM), SQL/dbt models, Power BI dashboards, data samples, and docs.
-- GitHub Actions workflow that deploys the UI on push to `main`.
+> **The Grower is the drift regulator**
 
-## Quickstart
+## 🌌 Constellation Information
 
-1) Create a new repo on GitHub named `the-grower` (or whatever you like), **empty** (no README).
-2) On your machine (or Codespaces):
+- **Module Key**: `grower_model`  
+- **Repository**: `grower-model`
+- **Orbit**: `growth-experiment`
+- **Status**: `seed`
+- **Emoji**: 🌻
 
-```bash
-git init
-git branch -m main
-git add .
-git commit -m "feat: seed The Grower scaffold"
-git remote add origin https://github.com/<your-username>/<your-repo>.git
-git push -u origin main
-```
+## 🚀 Quick Start
 
-3) In the repo Settings → Pages, set:
-- **Build and deployment**: GitHub Actions
-- The provided workflow (`Deploy Pages`) will publish `apps/grower-ui` to Pages automatically.
+1. **Review seeds/**: Adapt seeded data for this module
+2. **Configure schemas/**: Update schema definitions as needed  
+3. **Generate signals/**: Create latest.json broadcast file
+4. **Run validation**: `scripts/validate.sh`
 
-4) Visit your Pages URL (e.g., `https://<your-username>.github.io/<your-repo>/`).
+## 📡 Broadcasting
 
-## Repo layout
+This module produces a `signals/latest.json` file conforming to the constellation's broadcast schema. The Signal (📡) aggregates these across all stars.
 
-```
-.
-├─ apps/
-│  └─ grower-ui/          # Static site that becomes your public sandbox
-├─ analytics/
-│  ├─ ga4/
-│  └─ gtm/
-├─ models/                # SQL/dbt (add your warehouse models here)
-├─ dashboards/
-│  └─ powerbi/
-├─ data/
-│  └─ sample/
-├─ docs/                  # Architecture, roadmap, etc.
-└─ .github/workflows/     # Pages deploy workflow
-```
+## 🔗 Constellation Links
 
-## Local edits
+- **Hub**: [FourTwenty Analytics](https://github.com/zbreeden/FourTwentyAnalytics)
+- **Archive**: Glossary, tags, and canonical definitions
+- **Signal**: Cross-constellation broadcasting and telemetry
 
-It’s plain HTML/CSS/JS. Open `apps/grower-ui/index.html` in a browser to preview.
-Adjust module cards in `assets/script.js` (see the `modules` array).
+---
 
-## GA4/GTM
-
-The UI includes a `window.dataLayer` bootstrap. If you use GTM, add your container snippet.
-If you use GA4 gtag directly, add your `G-XXXX` config. Avoid double-tagging.
-
-## Licensing
-
-MIT. See `LICENSE`.
+*This star is part of the FourTwenty Analytics constellation - a modular analytics sandbox where each repository is a specialized "model" within an orbital system.*
